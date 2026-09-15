@@ -1,1 +1,0 @@
-# kotlin_lang_study

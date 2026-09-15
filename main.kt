@@ -1,20 +1,18 @@
-class CountingSet<T> (val innerSet: MutableCollection<T> = HashSet<T>()): MutableCollection<T> by innerSet {
-  var objectAdded = 0
+fun <T> joinToString(collection: Collection<T>, separator: String, prefix: String, postfix: String): String 
+{
+    val result = StringBuilder(prefix)
 
-  override fun add(element: T): Boolean {
-    objectAdded ++
-    return innerSet.add(element)
-  }
+    for ((index, element) in collection.withIndex()) {
+        if (index > 0) result.append(separator)
+        result.append(element)
+    }
 
-  override fun addAll(elements: Collection<T>): Boolean {
-    objectAdded += elements.size
-    return innerSet.addAll(elements)
-  }
+    result.append(postfix)
+    return result.toString()
 }
 
 
-fun main() {
-  val cset = CountingSet<Int>()
-  cset.addAll(listOf(1, 1, 2))
-  println("${cset.objectAdded} objects were added, ${cset.size} remain")
+fun main(args: Array<String>) {
+    val list = listOf(1, 2, 3)
+    println(joinToString(list, "; ", "(", ")"))
 }
