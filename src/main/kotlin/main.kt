@@ -1,3 +1,12 @@
+data class Point(val x: Int, val y: Int) {
+//    operator fun plus(other: Point) = Point(x + other.x, y + other.y)
+}
+
+operator fun Point.plus(p: Point) = Point(x + p.x, y + p.y)
+
+
 fun main(args: Array<String>) {
-    println("Hello Hong phil")
+    val p1 = Point(10, 20)
+    val p2 = Point(30, 40)
+    println(p1 + p2)
 }
