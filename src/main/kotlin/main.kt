@@ -8,8 +8,11 @@ operator fun Double.times(p: Point) = p * this
 
 fun main(args: Array<String>) {
     val p1 = Point(10, 20)
-    val p2 = Point(30, 40)
+    var p2 = Point(30, 40)
     println(p1 + p2)
     println(p1 * 2.0)
     println(2.0 * p1)
+
+    p2 += p1
+    println(p2)
 }
