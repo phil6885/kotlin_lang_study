@@ -16,7 +16,14 @@ data class Point(val x: Int, val y: Int) {
 operator fun Double.times(p: Point) = p * this
 operator fun Point.plus(p: Point) = Point(x + p.x, y + p.y)
 operator fun Point.times(scale: Double) = Point((x * scale).toInt(), (y * scale).toInt())
-
+operator fun Point.get(index: Int): Int {
+    println("===> : $index, $x, $y")
+    return when (index) {
+        0 -> x
+        1 -> y
+        else -> throw IndexOutOfBoundsException("Invalid coordinate $index")
+    }
+}
 fun main(args: Array<String>) {
     val p1 = Point(10, 20)
     var p2 = Point(30, 40)
@@ -27,5 +34,6 @@ fun main(args: Array<String>) {
     println(p1 != p2)
 
     p2 += p1
-    println(p2)
+    println(p1)
+    println("p1[0]: ${p1[0]}, p1[1]: ${p1[1]}")
 }
